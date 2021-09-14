@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blogs to Read</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body class="container">
+    <h1 class="my-5">Blogs to Read</h1>
+    <form action="/add-blog" method="POST" class="form-group">
+      <input type="text" required class="form-control mt-4" name="Title" placeholder="Enter Title" />
+      <input type="text" required class="form-control mt-4" name="Url" placeholder="Enter URL" />
+      <input type="submit" class="btn btn-primary mt-4" />
+    </form>
+    <ol class="list">
+      {{if not .Blogs }}
+      <h2>No Blogs Added Yet</h2>
+      {{else}} {{range .Blogs}}
+      <li class="my-1">
+        <input type="checkbox">
+        <a href="{{.Url}}"> {{.Title}}</a>
+      </li>
+      {{end}} {{end}}
+    </ol>
+  </body>
+</html>
